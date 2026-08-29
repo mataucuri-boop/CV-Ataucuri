@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV | Maria Alejandra Ataucuri Mendoza</title>
+    <style>
+        /* ================= VARIABLES DE COLOR ================= */
+        :root {
+            --pink-pastel: #FFD1DC;
+            --pink-soft: #FFB6C1;
+            --blue-light: #ADD8E6;
+            --text-dark: #333333;
+            --text-light: #ffffff;
+            --bg-light: #FAFAFA;
+            --nav-bg: #FFD1DC;
+        }
+
+        /* ================= ESTILOS GLOBALES ================= */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* ================= NAVEGACIÓN Y MENÚ HAMBURGUESA ================= */
+        header {
+            background-color: var(--nav-bg);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 70px;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 5%;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--text-dark);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links li a {
+            font-size: 1.1rem;
+            font-weight: 600;
+            padding: 8px 16px;
+            border-radius: 4px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .nav-links li a:hover {
+            background-color: var(--blue-light);
+            color: var(--text-dark);
+        }
+
+        /* Botón Hamburguesa */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            flex-direction: column;
+            gap: 6px;
+            z-index: 1001; /* Siempre por encima del menú móvil */
+        }
+
+        .hamburger span {
+            display: block;
+            width: 30px;
+            height: 4px;
+            background-color: var(--text-dark);
+            border-radius: 2px;
+            transition: transform 0.4s ease, opacity 0.4s ease;
+        }
+
+        /* ================= SECCIONES Y CONTENIDO ================= */
+        section {
+            padding: 100px 5% 60px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        /* Sección Inicio */
+        #inicio {
+            background-color: var(--bg-light);
+            align-items: center;
+            text-align: center;
+        }
+
+        .profile-name {
+            font-size: 3rem;
+            color: var(--pink-soft);
+            margin-bottom: 10px;
+        }
+
+        .profile-title {
+            font-size: 1.5rem;
+            color: var(--blue-light);
+            margin-bottom: 30px;
+        }
+
+        .profile-desc {
+            font-size: 1.1rem;
+            max-width: 800px;
+            text-align: justify;
+            background-color: var(--white);
+            padding: 30px;
+            border-left: 8px solid var(--pink-pastel);
+            box-shadow: 0 0 0 1px rgba(0,0,0,0.05); /* Toque Flat */
+        }
+
+        /* Sección Experiencia */
+        #experiencia {
+            background-color: var(--blue-light);
+        }
+
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .timeline-item {
+            background-color: #fff;
+            padding: 25px;
+            border-radius: 0px; /* Estilo Flat */
+            border-left: 8px solid var(--pink-soft);
+        }
+
+        .timeline-item h3 {
+            color: var(--text-dark);
+        }
+
+        .timeline-item h4 {
+            color: var(--pink-soft);
+            font-weight: 600;
+        }
+
+        .timeline-item .date {
+            font-style: italic;
+            color: #666;
+            margin-bottom: 15px;
+            display: inline-block;
+        }
+
+        .timeline-item ul {
+            list-style-type: square;
+            margin-left: 20px;
+        }
+
+        .timeline-item ul li {
+            margin-bottom: 8px;
+        }
+
+        /* Sección Habilidades */
+        #habilidades {
+            background-color: var(--pink-pastel);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .skills-card {
+            background-color: #fff;
+            padding: 30px;
+            border-top: 8px solid var(--blue-light);
+        }
+
+        .skills-card h3 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: var(--text-dark);
+        }
+
+        .skills-card ul li {
+            background-color: var(--bg-light);
+            margin-bottom: 10px;
+            padding: 10px;
+            text-align: center;
+            font-weight: 600;
+            border: 1px solid #eee;
+        }
+
+        /* Sección Formación */
+        #formacion {
+            background-color: var(--bg-light);
+        }
+
+        .edu-item {
+            background-color: var(--pink-soft);
+            padding: 20px;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+        
+        .edu-item h3 {
+            color: var(--text-dark);
+            margin-bottom: 5px;
+        }
+
+        .edu-item p {
+            font-size: 1.1rem;
+            color: var(--text-dark);
+        }
+
+        /* Sección Contacto */
+        #contacto {
+            background-color: var(--blue-light);
+            text-align: center;
+            min-height: 60vh;
+        }
+
+        .contact-info {
+            background-color: #fff;
+            padding: 40px;
+            max-width: 600px;
+            margin: 0 auto;
+            border-bottom: 8px solid var(--pink-pastel);
+        }
+
+        .contact-info p {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+        
+        .contact-info strong {
+            color: var(--pink-soft);
+        }
+
+        footer {
+            background-color: var(--text-dark);
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* ================= MEDIA QUERIES (RESPONSIVE) ================= */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 70%;
+                height: 100vh;
+                background-color: var(--pink-pastel);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                transition: right 0.4s ease-in-out;
+                box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .nav-links li {
+                margin: 20px 0;
+            }
+
+            .nav-links li a {
+                font-size: 1.5rem;
+            }
+
+            /* Animación del botón hamburguesa activo */
+            .hamburger.active span:nth-child(1) {
+                transform: translateY(10px) rotate(45deg);
+            }
+
+            .hamburger.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active span:nth-child(3) {
+                transform: translateY(-10px) rotate(-45deg);
+            }
+
+            .profile-name {
+                font-size: 2.2rem;
+            }
+            
+            section {
+                padding: 100px 20px 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Menú de Navegación -->
+    <header>
+        <div class="logo">Alejandra Ataucuri</div>
+        <ul class="nav-links">
+            <li><a href="#inicio">Sobre Mí</a></li>
+            <li><a href="#experiencia">Experiencia</a></li>
+            <li><a href="#habilidades">Habilidades</a></li>
+            <li><a href="#formacion">Formación</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+        </ul>
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </header>
+
+    <!-- Sección Inicio (Sobre Mí) -->
+    <section id="inicio">
+        <div class="container">
+            <h1 class="profile-name">MARIA ALEJANDRA ATAUCURI MENDOZA</h1>
+            <h2 class="profile-title">Administración de Empresas & Marketing</h2>
+            <div class="profile-desc">
+                <p>Soy egresada en la carrera técnica de administración de empresas. Actualmente estoy en 4to año de la carrera de Marketing. Mi formación en administración me ha equipado con un fuerte conocimiento en gestión de negocios, análisis estratégico y liderazgo.</p>
+                <br>
+                <p>Ahora, estoy buscando la oportunidad de aplicar y ampliar estas habilidades en el mundo del marketing. Mi objetivo es contribuir con mis habilidades administrativas y mi creciente conocimiento en marketing para impulsar mi crecimiento personal y profesional. Soy una persona proactiva, siempre dispuesta a aprender y adaptarme a nuevas situaciones. Considero que la combinación de mis habilidades administrativas y mi pasión por el marketing me permitirá aportar valor a cualquier equipo.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Experiencia -->
+    <section id="experiencia">
+        <div class="container">
+            <h2 class="section-title">Experiencia Profesional</h2>
+            <div class="timeline">
+                
+                <div class="timeline-item">
+                    <h3>Asistente Administrativa</h3>
+                    <h4>COMASI SAC</h4>
+                    <span class="date">2023</span>
+                    <ul>
+                        <li>Proporcionar apoyo logístico para la coordinación de reuniones y eventos.</li>
+                        <li>Realizar control de inventarios para puntos de venta.</li>
+                        <li>Realizar pedidos de suministros de oficina e investigar nuevas ofertas y proveedores.</li>
+                        <li>Gestionar la revisión de facturas y pagos a proveedores.</li>
+                        <li>Actualizar y mantener las políticas y procedimientos de la oficina.</li>
+                        <li>Elaboración de documentos como informes, recibos, hojas de cálculo y memorandos.</li>
+                        <li>Proporcionar a los clientes información sobre puntos de fidelidad, canjes, etc.</li>
+                        <li>Mantener la participación constante del cliente para recopilar comentarios y resolver quejas.</li>
+                    </ul>
+                </div>
+
+                <div class="timeline-item">
+                    <h3>Asistente de Ventas</h3>
+                    <h4>COMASI SAC</h4>
+                    <span class="date">2020 - 2022</span>
+                    <ul>
+                        <li>Desarrollar y aplicar estrategias de ventas para alcanzar los objetivos y metas de ingresos.</li>
+                        <li>Realizar reporte de ventas y actividades administrativas logísticas.</li>
+                        <li>Asegurar el correcto manejo de stock de la tienda para evitar desabastecimiento.</li>
+                        <li>Seguimiento post venta.</li>
+                        <li>Gestionar la organización de eventos.</li>
+                        <li>Manejo de las consultas y quejas de los clientes.</li>
+                    </ul>
+                </div>
+
+                <div class="timeline-item">
+                    <h3>Asistente Administrativa</h3>
+                    <h4>J&F METAL MECANICA</h4>
+                    <span class="date">2018 - 2019</span>
+                    <ul>
+                        <li>Generar informes mensuales de ventas para el equipo de Gerencia de Ventas.</li>
+                        <li>Supervisar el envío de productos, garantizando la precisión del inventario.</li>
+                        <li>Emitir y coordinar la entrega y cobro de facturas y guías de envío.</li>
+                        <li>Preparación de cotizaciones del servicio/producto.</li>
+                        <li>Salvaguardar el inventario de productos para asegurar el suministro a producción.</li>
+                        <li>Mantener y actualizar la base de datos de empresas y organizaciones.</li>
+                        <li>Redacción de contratos laborales y orientación a nuevos empleados.</li>
+                        <li>Monitorear asistencia del personal y actualizar el Manual de Funciones.</li>
+                    </ul>
+                </div>
+
+                <div class="timeline-item">
+                    <h3>Asistente Administrativa</h3>
+                    <h4>ACADEMIA GAUSS</h4>
+                    <span class="date">2016 - 2017</span>
+                    <ul>
+                        <li>Administración de la página de Facebook de la empresa.</li>
+                        <li>Seguimiento a la base de datos de los clientes.</li>
+                        <li>Pagos procesados de proveedores, personal y servicios diversos.</li>
+                        <li>Colaboración en planificación, coordinación y evaluación de actividades académicas.</li>
+                        <li>Proporcionar información detallada al público sobre servicios educativos.</li>
+                        <li>Seguimiento y supervisión de las actividades del personal, clases y asistencia.</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Habilidades -->
+    <section id="habilidades">
+        <div class="container">
+            <h2 class="section-title">Habilidades y Conocimientos</h2>
+            <div class="skills-grid">
+                
+                <div class="skills-card">
+                    <h3>Habilidades Blandas</h3>
+                    <ul>
+                        <li>Trabajo en equipo</li>
+                        <li>Orientación al cliente</li>
+                        <li>Solución de problemas</li>
+                        <li>Toma de decisiones informadas</li>
+                        <li>Adaptabilidad</li>
+                        <li>Costos y presupuestos</li>
+                        <li>Organización y planificación</li>
+                        <li>Comunicación efectiva</li>
+                    </ul>
+                </div>
+
+                <div class="skills-card">
+                    <h3>Informática</h3>
+                    <ul>
+                        <li>Word</li>
+                        <li>Excel intermedio</li>
+                        <li>Power Point</li>
+                        <li>SPSS - Básico</li>
+                    </ul>
+                </div>
+
+                <div class="skills-card">
+                    <h3>Idiomas</h3>
+                    <ul>
+                        <li>Inglés básico</li>
+                        <li>Español (Nativo)</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Formación -->
+    <section id="formacion">
+        <div class="container">
+            <h2 class="section-title">Formación Académica</h2>
+            
+            <div class="edu-item">
+                <span class="date">2021 - 2025</span>
+                <h3>Marketing</h3>
+                <p>Universidad Nacional de San Agustín</p>
+            </div>
+
+            <div class="edu-item">
+                <span class="date">2013 - 2015</span>
+                <h3>Administración de Empresas</h3>
+                <p>Instituto UNITEK</p>
+            </div>
+
+            <h2 class="section-title" style="margin-top: 40px; font-size: 2rem;">Cursos y Congresos</h2>
+
+            <div class="edu-item">
+                <span class="date">2024</span>
+                <h3>Congreso MK-TOON</h3>
+                <p>Marketing - Universidad Nacional de San Agustín</p>
+            </div>
+
+            <div class="edu-item">
+                <span class="date">2024</span>
+                <h3>XVI Congreso Internacional de Casos Docentes en Marketing Público y No Lucrativo</h3>
+                <p>Universidad Nacional de San Agustín</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Sección Contacto -->
+    <section id="contacto">
+        <div class="container">
+            <h2 class="section-title">Contacto</h2>
+            <div class="contact-info">
+                <p><strong>Teléfono:</strong> 977 573 053</p>
+                <p><strong>Email:</strong> alejandraatc16@gmail.com</p>
+                <p><strong>Dirección:</strong> Urb. Víctor Chavez Castillo, Calle José de la mar B-6 - Socabaya, Arequipa</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Maria Alejandra Ataucuri Mendoza - CV Profesional</p>
+    </footer>
+
+    <!-- ================= SCRIPT PARA INTERACTIVIDAD ================= -->
+    <script>
+        const hamburger = document.querySelector(".hamburger");
+        const navLinks = document.querySelector(".nav-links");
+        const links = document.querySelectorAll(".nav-links li a");
+
+        // Activar el menú hamburguesa
+        hamburger.addEventListener("click", () => {
+            hamburger.classList.toggle("active");
+            navLinks.classList.toggle("active");
+        });
+
+        // Cerrar el menú al hacer clic en un enlace
+        links.forEach(link => {
+            link.addEventListener("click", () => {
+                hamburger.classList.remove("active");
+                navLinks.classList.remove("active");
+            });
+        });
+
+        // Desplazamiento suave para los enlaces del menú
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 70, // Ajuste por la altura del menú fijo
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
